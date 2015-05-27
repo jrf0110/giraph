@@ -34,7 +34,7 @@ Giraph comes with a number of different graph types:
 
 Exported as a factory function on the root namespace:
 
-#### `.([options])
+#### `.([options])`
 
 __Options and defaults__
 
