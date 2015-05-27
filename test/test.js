@@ -48,14 +48,21 @@ describe('Giraph', function(){
       var g1 = graph
         .add('a')
         .add('b')
-        .connect('a', 'b', 3);
+        .add('c')
+        .connect('a', 'b', 3)
+        .connect('a', 'c', 4);
 
       assert.deepEqual( g1.get('a').edges, {
         b: 3
+      , c: 4
       });
 
       assert.deepEqual( g1.get('b').edges, {
         a: 3
+      });
+
+      assert.deepEqual( g1.get('c').edges, {
+        a: 4
       });
     });
 
