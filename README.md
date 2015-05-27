@@ -137,3 +137,11 @@ Optional options:
 #### `.clone()`
 
 __Returns__ a new instance of the vertex
+
+## TODO
+
+* Solve for [Minimum Spanning Trees](https://www.wikiwand.com/en/Minimum_spanning_tree)
+* [Topological Sorting](http://www.wikiwand.com/en/Topological_sorting)
+* [Cliques and maximum cliques](https://www.wikiwand.com/en/Clique_(graph_theory))
+* [Planarism](https://www.wikiwand.com/en/Planar_graph)
+* Creating sub-graphs and walks
