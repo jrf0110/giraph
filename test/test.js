@@ -98,6 +98,24 @@ describe('Giraph', function(){
 
       assert.notEqual( g1.get('b').data, g2.get('b').data );
     });
+
+    it('.mutate(handler)', function(){
+      var g1 = graph
+        .clone()
+        .mutate(function( g2 ){
+          g2.add('a')
+            .add('b')
+            .connect('a', 'b');
+        });
+
+      assert.deepEqual( g1.get('a').edges, {
+        b: undefined
+      });
+
+      assert.deepEqual( g1.get('b').edges, {
+        a: undefined
+      });
+    });
   });
 
   describe('.dg() - Directed Graph', function(){
