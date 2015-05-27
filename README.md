@@ -30,9 +30,11 @@ Giraph comes with a number of different graph types:
 * [Directed Graph](#directed-graph)
 * [Directed Acyclic Graph](#directed-acyclic-graph)
 
-### `.([options])` Undirected Graph
+### Undirected Graph
 
 Exported as a factory function on the root namespace:
+
+#### `.([options])
 
 __Options and defaults__
 
@@ -91,3 +93,11 @@ require('giraph')()
     g.add('a').add('b').add('c');
   })
 ```
+
+### Directed Graph
+
+TODO
+
+### Directed Acyclic Graph
+
+TODO
