@@ -50,37 +50,45 @@ require('giraph')() // => empty graph
 
 The undirected graph has the following members
 
-##### `.add( id[, data] )`
+#### `.map: {}`
+
+Hashes vertices by id.
+
+#### `.options`
+
+Instance options
+
+#### `.add( id[, data] )`
 
 __Returns__ a new instance with [Vertex(id[, data])](#vertex) added to it.
 
-##### `.get( id )`
+#### `.get( id )`
 
 Gets the [Vertex](#vertex) at `id`.
 
-##### `.remove( id )`
+#### `.remove( id )`
 
 __Returns__ a new instance with `id` removed.
 
-##### `.connect( a, b, edgeWeight )`
+#### `.connect( a, b, edgeWeight )`
 
 __Returns__ a new instance with `a` and `b` connected.
 
-##### `.contains( String|Vertex id )`
+#### `.contains( String|Vertex id )`
 
 __Returns__ a boolean indicating whether or not `id` is in the graph.
 
 _Note: if passing in a String, is equivalent to checking `id in graph.map`._
 
-##### `.instance()`
+#### `.instance()`
 
 __Returns__ `this` instance or a `clone()` depending on `options.immutable`.
 
-##### `.clone()`
+#### `.clone()`
 
 __Returns__ a new instance of the graph
 
-##### `.mutate(handler)`
+#### `.mutate(handler)`
 
 Allows mutation to occur on an immutable graph for a single turn of the event loop.
 
@@ -101,3 +109,31 @@ TODO
 ### Directed Acyclic Graph
 
 TODO
+
+### Vertex
+
+A vertex is essentially an Identifier with data attached and connections to other vertices.
+
+It's available under `.vertex( id[, data[, options]])`.
+
+#### `.id String`
+
+ID of the vertex
+
+#### `.data Mixed`
+
+Optional attached data
+
+#### `.options Object`
+
+Optional options:
+
+```javascript
+{
+  immutable: true
+}
+```
+
+#### `.clone()`
+
+__Returns__ a new instance of the vertex
