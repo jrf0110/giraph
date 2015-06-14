@@ -50,13 +50,17 @@ require('giraph')() // => empty graph
 
 The undirected graph has the following members
 
-#### `.map: {}`
+#### Property: `.map: {}`
 
 Hashes vertices by id.
 
-#### `.options`
+#### Property: `.options`
 
 Instance options
+
+#### Property: `.length`
+
+The number of vertices
 
 #### `.add( id[, data] )`
 
@@ -80,13 +84,53 @@ __Returns__ a boolean indicating whether or not `id` is in the graph.
 
 _Note: if passing in a String, is equivalent to checking `id in graph.map`._
 
+#### `.merge( a[, b[, ...]] )`
+
+__Returns__ a new instance with all other graphs merged into the current.
+
+_Note: merging takes Left-to-right precedence. If `a` and `b` both contain the same node, `c`, but have different data attached, `b` will take precedence._
+
+#### `.each( Function iterator )`
+
+Iterates through each vertex. The `iterator` argument has the following signature:
+
+```
+function( Vertex v, Number i, Graph g )
+```
+
+__Returns__ `this`
+
+#### `.reduce( Function iterator, Mixed initialValue )`
+
+Iterates through the graph, producing a single value. `iterator` has the following signature
+
+```
+function( Mixed currentValue, Vertex V, Number i, Graph g )
+```
+
+__Returns__ Value of reduction
+
 #### `.instance()`
 
 __Returns__ `this` instance or a `clone()` depending on `options.immutable`.
 
+#### `.edges([id])`
+
+__Returns__ an array of edges with the following structure:
+
+```javascript
+{ vertices: ['a', 'b'], weight: 10 }
+```
+
+_Optionally_, pass a vertex ID to only get edges touching that vertex.
+
 #### `.clone()`
 
 __Returns__ a new instance of the graph
+
+#### `.weight()`
+
+__Returns__ The total weight of all edges in the graph
 
 #### `.mutate(handler)`
 
@@ -101,6 +145,10 @@ require('giraph')()
     g.add('a').add('b').add('c');
   })
 ```
+
+#### `.mst()`
+
+__Returns__ a [Minimum Spanning Tree](https://www.wikiwand.com/en/MST) represented as a `Graph`.
 
 ### Directed Graph
 
@@ -140,7 +188,6 @@ __Returns__ a new instance of the vertex
 
 ## TODO
 
-* Solve for [Minimum Spanning Trees](https://www.wikiwand.com/en/Minimum_spanning_tree)
 * [Topological Sorting](http://www.wikiwand.com/en/Topological_sorting)
 * [Cliques and maximum cliques](https://www.wikiwand.com/en/Clique_(graph_theory))
 * [Planarism](https://www.wikiwand.com/en/Planar_graph)
