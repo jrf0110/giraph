@@ -90,6 +90,19 @@ __Returns__ a new instance with all other graphs merged into the current.
 
 _Note: merging takes Left-to-right precedence. If `a` and `b` both contain the same node, `c`, but have different data attached, `b` will take precedence._
 
+__Example:__
+
+```javascript
+var g1 = giraph()
+  .add('a')
+  .add('b', { some: 'thing' })
+  .connect('a', 'b', 1);
+
+var g2 = giraph()
+ .add('b', { some: 'data' })
+ .add('c')
+```
+
 #### `.each( Function iterator )`
 
 Iterates through each vertex. The `iterator` argument has the following signature:
@@ -103,6 +116,13 @@ __Example__:
 ```javascript
 require('giraph')
   .add('a', { some: 'data' }).add('b').add('c')
+  .each( function( vertex, i, graph ){
+    console.log( vertex.id, vertex.data, i );
+  });
+  
+  // a { some: 'data' }
+  // b null
+  // c null
 ```
 
 __Returns__ `this`
