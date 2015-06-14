@@ -27,8 +27,8 @@ require('giraph')()
 Giraph comes with a number of different graph types:
 
 * [Undirected Graph](#undirected-graph)
-* [Directed Graph](#directed-graph)
-* [Directed Acyclic Graph](#directed-acyclic-graph)
+* [Directed Graph (Not Implemented Yet)](#directed-graph)
+* [Directed Acyclic Graph (Not Implemented Yet)](#directed-acyclic-graph)
 
 ### Undirected Graph
 
@@ -96,6 +96,13 @@ Iterates through each vertex. The `iterator` argument has the following signatur
 
 ```
 function( Vertex v, Number i, Graph g )
+```
+
+__Example__:
+
+```javascript
+require('giraph')
+  .add('a', { some: 'data' }).add('b').add('c')
 ```
 
 __Returns__ `this`
