@@ -101,6 +101,13 @@ var g1 = giraph()
 var g2 = giraph()
  .add('b', { some: 'data' })
  .add('c')
+ .conect('b', 'c');
+ 
+// a->b->c
+var g3 = g1.merge( g2 );
+
+// { some: 'data' }
+console.log( g3.get('b').data );
 ```
 
 #### `.each( Function iterator )`
