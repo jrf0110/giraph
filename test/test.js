@@ -18,6 +18,17 @@ describe('Giraph', function(){
       var vc = v.clone();
       assert.notEqual( v.data, vc.data );
     });
+
+    it.only('.clone() - clones incoming/outgoing', function(){
+      var v = giraph.vertex('a', { my: 'obj' });
+
+      v.incoming.push('b');
+      v.outgoing.push('c');
+
+      var vc = v.clone();
+      assert.notEqual( v.incoming, vc.incoming );
+      assert.notEqual( v.outgoing, vc.outgoing );
+    });
   });
   
   describe('() - Graph', function(){
