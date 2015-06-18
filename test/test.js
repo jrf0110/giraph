@@ -19,7 +19,7 @@ describe('Giraph', function(){
       assert.notEqual( v.data, vc.data );
     });
 
-    it.only('.clone() - clones incoming/outgoing', function(){
+    it('.clone() - clones incoming/outgoing', function(){
       var v = giraph.vertex('a', { my: 'obj' });
 
       v.incoming.push('b');
@@ -44,8 +44,8 @@ describe('Giraph', function(){
         .clone();
 
       assert.deepEqual( g1.map, {
-        a: { id: 'a', edges: { b: 2 }, data: undefined }
-      , b: { id: 'b', edges: { a: 2 }, data: undefined }
+        a: { id: 'a', edges: { b: 2 }, data: undefined, incoming: [], outgoing: [] }
+      , b: { id: 'b', edges: { a: 2 }, data: undefined, incoming: [], outgoing: [] }
       });
     });
 
@@ -311,11 +311,41 @@ describe('Giraph', function(){
     });
   });
 
-  describe('.dg() - Directed Graph', function(){
+  it('.causesCycle( a, b )', function(){
+    // var g1 = giraph({ directed: true, acyclic: true })
+    //   .add('a')
+    //   .add('b');
 
+    // assert.equal( g1.causesCycle('a', 'b'), true );
+
+    // g1 = g1
+    //   .add('c')
+    //   .add('d')
+    //   .add('e')
+    //   .connect('a', 'b')
+    //   .connect('a', 'c')
+    //   .connect('b', 'c')
+    //   .connect('c', 'e');
+
+    // assert.equal( g1.causesCycle('e', 'a'), true );
+    // assert.equal( g1.causesCycle('a', 'e'), false );
   });
 
-  describe('.dag() - Directed Acyclic Graph', function(){
+  it('.topologicalSort()', function(){
+    var g1 = graph
+      .add('a')
+      .add('b');
+      .add('c')
+      .add('d')
+      .add('e')
+      .connect('a', 'b')
+      .connect('a', 'c')
+      .connect('b', 'c')
+      .connect('c', 'e');
 
+    assert.deepEqual( g1.topologicalSort(), [
+      giraph.vertex('d')
+    , 
+    ]);
   });
 });
